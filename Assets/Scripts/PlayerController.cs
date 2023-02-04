@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed;
-    [SerializeField] public float waterLevel;
+    public float waterLevel;
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject lane4;
     private int currentLane;
     private GameObject[] lanes;
+    [SerializeField] private Image waterBarImage;
+    [SerializeField] private float maxWater;
 
     private GUIStyle _guiStyle = new GUIStyle();
     // Start is called before the first frame update
@@ -79,6 +82,8 @@ public class PlayerController : MonoBehaviour
         {
             waterLevel += waterIncrease;
         }
+        
+        waterBarImage.fillAmount = Mathf.Clamp(waterLevel / maxWater, 0, 1f);
     }
     
     
