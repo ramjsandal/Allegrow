@@ -47,12 +47,7 @@ public class PlayerController : MonoBehaviour
         
         // Access the position
         Vector2 currentPosition = currentTransform.position;
-
-        // Constantly move to the right, and move up and down
-        /*
-         * currentTransform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, 
-            currentPosition.y + Time.deltaTime * verticalSpeed * Input.GetAxis("Vertical"));
-         */
+        
 
         // If we press up, go up by one lane
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentLane > 0)
@@ -92,12 +87,13 @@ public class PlayerController : MonoBehaviour
     private void decreaseWaterLevel()
     {
         waterLevel -= waterDecreasePerSecond * Time.deltaTime;
+        waterLevel = Mathf.Clamp(waterLevel, 0, 100f);
     }
 
     private void OnGUI()
     {
         // Draw your water level 
-        GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel.ToString("F0"), _guiStyle);
+        // GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel.ToString("F0"), _guiStyle);
 
     }
 }
