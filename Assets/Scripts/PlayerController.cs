@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed;
-    [SerializeField] private float verticalSpeed;
     [SerializeField] public float waterLevel;
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
@@ -60,6 +59,8 @@ public class PlayerController : MonoBehaviour
             currentLane += 1;
         }
         
+        
+        // Move the player to the new lane
         currentTransform.position =
             new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, lanes[currentLane].transform.position.y);
 
