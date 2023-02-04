@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ObstacleBehavior : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(gameObject);
     }
