@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         waterBarImage.fillAmount = Mathf.Clamp(waterLevel / maxWater, 0, 1f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) 
+    private void OnTriggerStay2D(Collider2D collision) 
     {
         // If we collide with an enemy...
         if (collision.gameObject.CompareTag("Enemy"))
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
             waterLevel += waterIncrease;
         }
     }
+    
     
     
 
