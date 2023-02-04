@@ -8,20 +8,26 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float horizontalSpeed;
+    
+    
+    [Header("Water")]
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
+    [SerializeField] private Image waterBarImage;
+    [SerializeField] private float maxWater;
+    [SerializeField] private float contamWaterDecrease;
+    [SerializeField] private float bugWaterDecrease;
+
+    [Header("Lanes")]
     [SerializeField] private GameObject lane0;
     [SerializeField] private GameObject lane1;
     [SerializeField] private GameObject lane2;
     [SerializeField] private GameObject lane3;
     [SerializeField] private GameObject lane4;
-    [SerializeField] private Image waterBarImage;
-    [SerializeField] private float maxWater;
-    [SerializeField] private float contamWaterDecrease;
-    [SerializeField] private float bugWaterDecrease;
-    
+
     private float waterLevel;
     private int currentLane;
     private GameObject[] lanes;
