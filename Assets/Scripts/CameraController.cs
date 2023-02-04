@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour
     {
         // get root x position and lock y position
         _rootXPos = GameObject.FindGameObjectWithTag("Player").transform.position.x;
-        yPos = -0.5f;
 
         // get fixed distance to root (x component)
         _distanceToRoot = transform.position.x - _rootXPos;
@@ -24,6 +23,6 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         // lock the camera's x position to the delta between root and camera
-        transform.position = new Vector3(_distanceToRoot, yPos);
+        transform.position = new Vector3(_distanceToRoot, yPos, -10f);
     }
 }
