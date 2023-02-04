@@ -20,6 +20,6 @@ public class HorizontalBug : MonoBehaviour
     void Update()
     {
         float step = Time.deltaTime * smoothingVal;
-        this.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        this.transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,14 +13,13 @@ public class VertBug : MonoBehaviour
     // the time between each swap
     [SerializeField] private float interval;
 
-    private Vector3 _pos;
+    private float _pos;
     private bool _laneSwap;
     
     // Start is called before the first frame update
     private void Start()
     {
-        _pos = transform.position;
-        _pos.y = laneOne.transform.position.y;
+        _pos = transform.position.y;
         _laneSwap = true;
         
         InvokeRepeating(nameof(SwapLanes), 0, interval);
@@ -27,7 +27,20 @@ public class VertBug : MonoBehaviour
 
     private void SwapLanes()
     {
-        _pos.y = _laneSwap ? laneTwo.transform.position.y : laneOne.transform.position.y;
+        _pos = _laneSwap ? laneTwo.transform.position.y : laneOne.transform.position.y;
         _laneSwap = !_laneSwap;
+    }
+
+    private void Update()
+    {
+        this.transform.position = new Vector2(this.transform.position.x, _pos);
+        
+        /*
+         *
+         *
+         * float step = Time.deltaTime * smoothingVal;
+        this.transform.position = Vector2.MoveTowards(this.transform.position,
+            new Vector2(this.transform.position.x, _pos), step);
+         */
     }
 }
