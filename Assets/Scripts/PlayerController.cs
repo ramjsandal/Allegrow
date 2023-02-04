@@ -12,12 +12,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
+    [SerializeField] private GameObject lane1;
+    [SerializeField] private GameObject lane2;
+    [SerializeField] private GameObject lane3;
+    [SerializeField] private GameObject lane4;
+    [SerializeField] private GameObject lane5;
+    private GameObject currentLane;
+    
 
     private GUIStyle _guiStyle = new GUIStyle();
     // Start is called before the first frame update
     void Start()
     {
-        
+        _guiStyle.fontSize = 100;
+        Transform t = this.transform;
+        t.position = new Vector2(t.position.x, lane3.transform.position.y);
+        currentLane = lane3;
     }
 
     // Update is called once per frame
@@ -28,11 +38,22 @@ public class PlayerController : MonoBehaviour
         
         // Access the position
         Vector2 currentPosition = currentTransform.position;
-        
+
         // Constantly move to the right, and move up and down
-        currentTransform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, 
+        /*
+         * currentTransform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, 
             currentPosition.y + Time.deltaTime * verticalSpeed * Input.GetAxis("Vertical"));
+         */
+
+        currentTransform.position =
+            new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, currentPosition.y);
         
+        // If we press up, go up by one lane
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            
+        }
+
         decreaseWaterLevel();
     }
 
@@ -59,9 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnGUI()
     {
-        _guiStyle.fontSize = 100;
         // Draw your water level 
-        GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel, _guiStyle);
+        GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel.ToString("F0"), _guiStyle);
 
     }
 }
