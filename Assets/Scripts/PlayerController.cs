@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
          */
 
         // If we press up, go up by one lane
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentLane > 0)
         {
             currentLane -= 1;
-        } else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currentLane < 4)
         {
             currentLane += 1;
         }
