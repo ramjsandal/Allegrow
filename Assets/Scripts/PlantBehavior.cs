@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class PlantBehavior : MonoBehaviour
 {
-    private MeshRenderer _renderer;
-    [SerializeField] private string plantScene;
+    //private MeshRenderer _renderer;
+    //[SerializeField] private string plantScene;
+    [SerializeField]
+    int bgChange = 0;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    BackgroundManager bgman;
+
     void Start()
     {
         
@@ -25,12 +29,18 @@ public class PlantBehavior : MonoBehaviour
     private void OnMouseDown()
     {
         // XDDDDD it checks if you click the object by the way!!!11!11!
-        changeScene();
+        //changeScene();
+        Debug.Log("OnMouseDown called");
+        bgman.changeBackground(bgChange);
     }
 
     private void changeScene()
     {
-        SceneManager.LoadScene(plantScene);
+        /*if (!string.IsNullOrEmpty(plantScene))
+        {
+            Invoke("LoadNextLevel", 2);
+        }
+        SceneManager.LoadScene(plantScene);*/
     }
 
 
