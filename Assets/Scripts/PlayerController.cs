@@ -72,13 +72,13 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision) 
     {
         // If we collide with an enemy...
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Plastic"))
         {
             waterLevel -= waterDecrease;
             Destroy(collision.gameObject);
         }
         // If we collide with a "friendly" (water, etc)
-        else if (collision.gameObject.CompareTag("Friendly"))
+        else if (collision.gameObject.CompareTag("Water"))
         {
             if (Input.GetKey(KeyCode.Space))
             {

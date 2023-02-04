@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Friendly
+  - ContamWater
+  - Water
+  - Bug
+  - Pipe
+  - Plastic
   layers:
   - Default
   - TransparentFX
