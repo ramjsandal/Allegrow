@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed;
-    public float waterLevel;
+    private float waterLevel;
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         lanes[3] = lane3;
         lanes[4] = lane4;
         _guiStyle.fontSize = 100;
+        waterLevel = maxWater;
         Transform t = this.transform;
         t.position = new Vector2(t.position.x, lane2.transform.position.y);
         currentLane = 2;
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
             new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, lanes[currentLane].transform.position.y);
 
         decreaseWaterLevel();
+        waterBarImage.type = Image.Type.Filled;
+        waterBarImage.fillAmount = Mathf.Clamp(waterLevel / maxWater, 0, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -82,8 +85,6 @@ public class PlayerController : MonoBehaviour
         {
             waterLevel += waterIncrease;
         }
-        
-        waterBarImage.fillAmount = Mathf.Clamp(waterLevel / maxWater, 0, 1f);
     }
     
     
