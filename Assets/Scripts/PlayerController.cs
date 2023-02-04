@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float horizontalSpeed;
+
+    public bool pipeEnter = false;
+    public bool pipeEnd = false;
     
     
     [Header("Water")]
@@ -59,14 +62,18 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPosition = currentTransform.position;
         
 
-        // If we press up, go up by one lane
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentLane > 0)
+        // If we press up, and we arent in a pipe, go up by one lane
+        if (!pipeEnter)
         {
-            currentLane -= 1;
-        } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currentLane < 4)
-        {
-            currentLane += 1;
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentLane > 0)
+            {
+                currentLane -= 1;
+            } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currentLane < 4)
+            {
+                currentLane += 1;
+            }    
         }
+        
         
         
         // Move the player to the new lane

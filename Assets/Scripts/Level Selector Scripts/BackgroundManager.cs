@@ -10,7 +10,7 @@ public class BackgroundManager : MonoBehaviour
     GameObject[] backgrounds;
 
     //Used to point to the current background
-    int pointer;
+    public int pointer;
 
     void Start()
     {
