@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             waterLevel -= waterDecrease;
+            Destroy(collision.gameObject);
         }
         // If we collide with a "friendly" (water, etc)
         else if (collision.gameObject.CompareTag("Friendly"))
