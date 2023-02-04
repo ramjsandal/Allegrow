@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,7 +79,12 @@ public class PlayerController : MonoBehaviour
         // If we collide with a "friendly" (water, etc)
         else if (collision.gameObject.CompareTag("Friendly"))
         {
-            waterLevel += waterIncrease;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                waterLevel += waterIncrease;
+                Destroy(collision.gameObject);
+            }
+            
         }
     }
     
