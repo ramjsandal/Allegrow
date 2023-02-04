@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed;
-    private float waterLevel;
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
@@ -18,10 +17,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject lane2;
     [SerializeField] private GameObject lane3;
     [SerializeField] private GameObject lane4;
-    private int currentLane;
-    private GameObject[] lanes;
     [SerializeField] private Image waterBarImage;
     [SerializeField] private float maxWater;
+    [SerializeField] private float contamWaterDecrease;
+    [SerializeField] private float bugWaterDecrease;
+    
+    private float waterLevel;
+    private int currentLane;
+    private GameObject[] lanes;
 
     private GUIStyle _guiStyle = new GUIStyle();
     // Start is called before the first frame update
@@ -85,6 +88,23 @@ public class PlayerController : MonoBehaviour
                 waterLevel += waterIncrease;
                 Destroy(collision.gameObject);
             }
+            
+        } 
+        else if (collision.gameObject.CompareTag("ContamWater"))
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                waterLevel -= contamWaterDecrease;
+                Destroy(collision.gameObject);
+            }
+        } 
+        else if (collision.gameObject.CompareTag("Bug"))
+        {
+            waterLevel -= bugWaterDecrease;
+            Destroy(collision.gameObject);
+        } 
+        else if (collision.gameObject.CompareTag("Pipe"))
+        {
             
         }
     }
