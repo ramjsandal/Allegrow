@@ -15,6 +15,8 @@ public class VertBug : MonoBehaviour
 
     private float _pos;
     private bool _laneSwap;
+
+    [SerializeField] float smoothingVal;
     
     // Start is called before the first frame update
     private void Start()
@@ -33,14 +35,15 @@ public class VertBug : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position = new Vector2(this.transform.position.x, _pos);
         
-        /*
-         *
-         *
-         * float step = Time.deltaTime * smoothingVal;
+        //this.transform.position = new Vector2(this.transform.position.x, _pos);
+        
+        
+        float step = Time.deltaTime * smoothingVal;
         this.transform.position = Vector2.MoveTowards(this.transform.position,
             new Vector2(this.transform.position.x, _pos), step);
-         */
+        
+        
     }
+    
 }
