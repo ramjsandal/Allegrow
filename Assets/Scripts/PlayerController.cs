@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float verticalSpeed;
-    [SerializeField] private float waterLevel;
-    [SerializeField] private int health;
+    [SerializeField] public float waterLevel;
     [SerializeField] private int waterDecreasePerSecond;
-    
+    [SerializeField] private float waterIncrease;
+    [SerializeField] private float waterDecrease;
+
+    private GUIStyle _guiStyle = new GUIStyle();
     // Start is called before the first frame update
     void Start()
     {
@@ -30,21 +32,25 @@ public class PlayerController : MonoBehaviour
         // Constantly move to the right, and move up and down
         currentTransform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, 
             currentPosition.y + Time.deltaTime * verticalSpeed * Input.GetAxis("Vertical"));
+        
+        decreaseWaterLevel();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
         // If we collide with an enemy...
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            
+            waterLevel -= waterDecrease;
         }
         // If we collide with a "friendly" (water, etc)
         else if (collision.gameObject.CompareTag("Friendly"))
         {
-            
+            waterLevel += waterIncrease;
         }
     }
+    
+    
 
     private void decreaseWaterLevel()
     {
@@ -53,6 +59,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnGUI()
     {
-        // Draw your water level and HP
+        _guiStyle.fontSize = 100;
+        // Draw your water level 
+        GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel, _guiStyle);
+
     }
 }

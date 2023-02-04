@@ -142,8 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 5
   verticalSpeed: 5
-  waterLevel: 0
-  health: 0
+  waterLevel: 100
+  waterDecreasePerSecond: 1
+  waterIncrease: 20
+  waterDecrease: 20
 --- !u!4 &54127349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217440053746969526, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
