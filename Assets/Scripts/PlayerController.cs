@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -14,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool pipeEnter = false;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
-    private float endY;
-    
+    private float _endY;
+
     [Header("Water")]
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
@@ -24,7 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxWater;
     [SerializeField] private float contamWaterDecrease;
     [SerializeField] private float bugWaterDecrease;
-    [SerializeField] private float maxDistanceToCollect;    
+    [SerializeField] private float maxDistanceToCollect; 
+    
+    private float _waterLevel;
 
     [Header("Lanes")]
     [SerializeField] private GameObject lane0;
@@ -33,76 +36,71 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject lane3;
     [SerializeField] private GameObject lane4;
 
-    [SerializeField] private LevelManager LevelManager;
+    [SerializeField] private LevelManager levelManager;
     
-    private float waterLevel;
-    private int currentLane;
-    private GameObject[] lanes;
+    private int _currentLane;
+    private GameObject[] _lanes;
 
-    private GUIStyle _guiStyle = new GUIStyle();
+    private readonly GUIStyle _guiStyle = new();
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        lanes = new GameObject[5];
-        lanes[0] = lane0;
-        lanes[1] = lane1;
-        lanes[2] = lane2;
-        lanes[3] = lane3;
-        lanes[4] = lane4;
+        _lanes = new GameObject[5];
+        _lanes[0] = lane0;
+        _lanes[1] = lane1;
+        _lanes[2] = lane2;
+        _lanes[3] = lane3;
+        _lanes[4] = lane4;
         _guiStyle.fontSize = 100;
-        waterLevel = maxWater;
+        _waterLevel = maxWater;
         Transform t = this.transform;
         t.position = new Vector2(t.position.x, lane2.transform.position.y);
-        currentLane = 2;
+        _currentLane = 2;
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _collider2D = this.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Access the transform
-        var currentTransform = this.transform;
+        Transform currentTransform = this.transform;
         
         // Access the position
         Vector2 currentPosition = currentTransform.position;
         
-
         // If we press up, and we arent in a pipe, go up by one lane
         if (!pipeEnter)
         {
-            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentLane > 0)
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && _currentLane > 0)
             {
-                currentLane -= 1;
-            } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currentLane < 4)
+                _currentLane -= 1;
+            } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && _currentLane < 4)
             {
-                currentLane += 1;
+                _currentLane += 1;
             }    
         }
-        
-        
-        
+
         // Move the player to the new lane
         if (!pipeEnter)
         {
             currentTransform.position =
-                new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, lanes[currentLane].transform.position.y);    
+                new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, _lanes[_currentLane].transform.position.y);    
         }
         else
         {
-            this.transform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, endY);
+            this.transform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, _endY);
         }
         
-
-        decreaseWaterLevel();
+        DecreaseWaterLevel();
         
         // Check if the player has run out of water
-        if (waterLevel < .2f)
+        if (_waterLevel < .2f)
         {
-            LevelManager.levelLost = true;
+            levelManager.levelLost = true;
         }
         waterBarImage.type = Image.Type.Filled;
-        waterBarImage.fillAmount = Mathf.Clamp(waterLevel / maxWater, 0, 1f);
+        waterBarImage.fillAmount = Mathf.Clamp(_waterLevel / maxWater, 0, 1f);
     }
 
     private void OnTriggerStay2D(Collider2D collision) 
@@ -110,7 +108,7 @@ public class PlayerController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Plastic":
-                waterLevel -= waterDecrease;
+                _waterLevel -= waterDecrease;
                 Destroy(collision.gameObject);
                 break;
             case "Water":
@@ -123,7 +121,7 @@ public class PlayerController : MonoBehaviour
                 // If the player is within range
                 if (distanceToCenter < maxDistanceToCollect)
                 {
-                    waterLevel += waterIncrease * (gap);
+                    _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
                     Destroy(collision.gameObject);
                 }
@@ -131,41 +129,31 @@ public class PlayerController : MonoBehaviour
             
             case "ContamWater":
                 if (!Input.GetKey(KeyCode.Space)) return;
-                waterLevel -= contamWaterDecrease;
+                _waterLevel -= contamWaterDecrease;
                 Destroy(collision.gameObject);
                 break;
             case "Bug":
-                waterLevel -= bugWaterDecrease;
+                _waterLevel -= bugWaterDecrease;
                 Destroy(collision.gameObject);
                 break;
             case "PipeStart":
                 pipeEnter = true;
                 break;
             case "LevelEnd":
-                LevelManager.levelWon = true;
+                levelManager.levelWon = true;
                 break;
             default: Debug.Log("This is for you Jane");
                 break;
         }
     }
     
-    
-    
-
-    private void decreaseWaterLevel()
+    private void DecreaseWaterLevel()
     {
-        waterLevel -= waterDecreasePerSecond * Time.deltaTime;
-        waterLevel = Mathf.Clamp(waterLevel, 0, 100f);
+        _waterLevel -= waterDecreasePerSecond * Time.deltaTime;
+        _waterLevel = Mathf.Clamp(_waterLevel, 0, 100f);
     }
 
-    private void OnGUI()
-    {
-        // Draw your water level 
-        // GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel.ToString("F0"), _guiStyle);
-
-    }
-
-    public void enterPipe(GameObject end, int endLane)
+    public void EnterPipe(GameObject end, int endLane)
     {
         // Remove Controls
         pipeEnter = true;
@@ -177,13 +165,13 @@ public class PlayerController : MonoBehaviour
         this._collider2D.enabled = false;
         
         // Set y position to y position of end
-        endY = end.transform.position.y;
+        _endY = end.transform.position.y;
 
-        currentLane = endLane;
+        _currentLane = endLane;
 
     }
 
-    public void exitPipe()
+    public void ExitPipe()
     {
         // Turn on collider
         this._collider2D.enabled = true;
