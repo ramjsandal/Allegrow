@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/Garden.unity
+    path: 
     guid: e2e80449a1bfacb4782f75ff32606e67
   - enabled: 1
     path: Assets/Scenes/scene1.unity
@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TaksinScene.unity
     guid: f3f30316520ad3d439dcff7cec0389e0
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: f6399d06202f7014e8e2d993b0354b70
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: eee8d72723ea28948ad2aa20e42d9b88
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: e6b883c073cd0b245b6cb8949b39003b
   m_configObjects: {}
