@@ -63,7 +63,7 @@ public class SpriteController : MonoBehaviour
     {
         tileSpriteRenderer.size += tileIncrement * Time.deltaTime;
         this.transform.position = startingPosition;
-        this.transform.position += new Vector3((tileSpriteRenderer.size.x - 1) * 0.5f, 0, 0);
+        this.transform.position += new Vector3((tileSpriteRenderer.size.x - 1) * 1.25f, 0, 0);
     }
 
     //void MoveSprite()
@@ -115,6 +115,7 @@ public class SpriteController : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && canGrow)
         {
+            canGrow = false;
             if (playerPosition.position.y == lanes[0].transform.position.y)
             {
 
@@ -140,14 +141,14 @@ public class SpriteController : MonoBehaviour
                 {
                     canGrow = false;
                 }
-                else if ( 1.96f > this.transform.position.y  || this.transform.position.y >= 0.96f)
-                {
-                    canGrow = false;
-                }
-                else if (1.96f <= this.transform.position.y)
-                {
-                    canGrow = true;
-                }
+                //else if ( 1.96f > this.transform.position.y  || this.transform.position.y >= 0.96f)
+                //{
+                //    canGrow = false;
+                //}
+                //else if (1.96f <= this.transform.position.y)
+                //{
+                //    canGrow = true;
+                //}
                 if (canGrow)
                 {
                     RootTrail();
@@ -165,14 +166,14 @@ public class SpriteController : MonoBehaviour
                 {
                     canGrow = false;
                 }
-                else if (-1.04f >= this.transform.position.y || this.transform.position.y > -2.04f)
-                {
-                    canGrow = false;
-                }
-                else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    canGrow = true;
-                }
+                //else if (-1.04f >= this.transform.position.y || this.transform.position.y > -2.04f)
+                //{
+                //    canGrow = false;
+                //}
+                //else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                //{
+                //    canGrow = true;
+                //}
                 else
                 {
                     if (canGrow)
