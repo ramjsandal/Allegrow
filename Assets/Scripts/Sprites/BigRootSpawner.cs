@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BigRootSpawner : MonoBehaviour
 {
+    [Header("Lanes")]
+    [SerializeField] private GameObject laneParent;
+    [SerializeField] private GameObject[] lanes;
+
+    [Header("Player")]
+    [SerializeField] private GameObject player;
+
     [Header("Big Root")]
     public bool startingRoot = true;
     [SerializeField] private GameObject bigRootPrefab;
@@ -30,12 +37,23 @@ public class BigRootSpawner : MonoBehaviour
     private Transform spawnPosition;
     private Transform currentPosition;
     private Vector3 spawnPositionSecondVertical;
+    private int laneCount;
+    private bool canSpawn;
     SpriteRenderer tileSpriteRenderer;
     private enum RootType { BigRoot, FirstVerticalRoot, SecondVerticalRoot};
     [SerializeField]private RootType rootType;
 
     private void Start()
     {
+        canSpawn = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        laneParent = GameObject.FindGameObjectWithTag("Lane");
+        laneCount = laneParent.transform.childCount;
+        lanes = new GameObject[laneCount];
+        for (int i = 0; i < laneCount; i++)
+        {
+            lanes[i] = laneParent.transform.GetChild(i).gameObject;
+        }
         rotation = Quaternion.Euler(0, 0, 180);
         spawnPosition = this.gameObject.transform;
         CreateNextBigRoot();
@@ -43,38 +61,60 @@ public class BigRootSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnPosition = this.gameObject.transform;
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+        if(player.transform.position.y == lanes[0].transform.position.y)
         {
-            if (rootType == RootType.BigRoot)
-            {
-                Invoke(nameof(CreateNextBigRoot), spawnDelay);
-                startingRoot = false;
+            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)){
+                Invoke(nameof(SpawnEnabler), 0.01f);
             }
-            else if(rootType == RootType.FirstVerticalRoot)
+        }
+        else if(player.transform.position.y == lanes[4].transform.position.y)
+        {
+            if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    spawnPositionSecondVertical = spawnPosition.position + laneDistance;
-                    CreateNextFirstVerticalRoot();
-                }
-                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    spawnPositionSecondVertical = spawnPosition.position - laneDistance;
-                    CreateNextFirstVerticalRoot();
-                }
+                Invoke(nameof(SpawnEnabler), 0.01f);
             }
-            else if (rootType == RootType.SecondVerticalRoot)
+        }
+        else
+        {
+            canSpawn = true;
+        }
+
+        spawnPosition = this.gameObject.transform;
+
+        if (canSpawn)
+        {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                if (rootType == RootType.BigRoot)
                 {
-                    spawnPositionSecondVertical = spawnPosition.position + laneDistance;
-                    CreateNextSecondVerticalRoot();
+                    Invoke(nameof(CreateNextBigRoot), spawnDelay);
+                    startingRoot = false;
                 }
-                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                else if (rootType == RootType.FirstVerticalRoot)
                 {
-                    spawnPositionSecondVertical = spawnPosition.position - laneDistance;
-                    CreateNextSecondVerticalRoot();
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        spawnPositionSecondVertical = spawnPosition.position + laneDistance;
+                        CreateNextFirstVerticalRoot();
+                    }
+                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        spawnPositionSecondVertical = spawnPosition.position - laneDistance;
+                        CreateNextFirstVerticalRoot();
+                    }
+                }
+                else if (rootType == RootType.SecondVerticalRoot)
+                {
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        spawnPositionSecondVertical = spawnPosition.position + laneDistance;
+                        CreateNextSecondVerticalRoot();
+                    }
+                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        spawnPositionSecondVertical = spawnPosition.position - laneDistance;
+                        CreateNextSecondVerticalRoot();
+                    }
                 }
             }
         }
@@ -143,6 +183,10 @@ public class BigRootSpawner : MonoBehaviour
         }
     }
 
+    void SpawnEnabler()
+    {
+        canSpawn = false;
+    }
     //void ChangeFirstVerticalRoot()
     //{
     //    lastSpawnedFirstRoot.GetComponent<SpriteRenderer>().sprite = firstVerticalRootThick;
