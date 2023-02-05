@@ -5,7 +5,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButtonBehavior : MonoBehaviour
+public class SceneLoaderButtonBehavior : MonoBehaviour
 {
     [SerializeField]
     BackgroundManager bgman;
