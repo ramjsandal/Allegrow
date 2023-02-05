@@ -50,14 +50,17 @@ MonoBehaviour:
   startingRoot: 1
   bigRootPrefab: {fileID: 7054797741812296950, guid: 6ed5864cd07c87341908e6e326ce382d, type: 3}
   lastSpawnedBigRoot: {fileID: 0}
+  bigYoff: 0
+  bigXoff: 0
   firstVerticalPrefabUp: {fileID: 2845392662858836667, guid: e2d56f2721fdc8a49978b6eab8cfab9f, type: 3}
   firstVerticalPrefabDown: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
   lastSpawnedFirstRoot: {fileID: 0}
+  firstYoff: 0
   secondVerticalPrefabThinUp: {fileID: 2845392662858836667, guid: e2d56f2721fdc8a49978b6eab8cfab9f, type: 3}
   secondVerticalPrefabThinDown: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
   lastSpawnedSecondRoot: {fileID: 0}
-  xoff: 0.11
-  laneDistance: {x: 0, y: 0, z: 0}
+  secondXoff: 0
+  laneDistance: {x: 0, y: 2.5, z: 0}
   spawnDelay: 0.15
   rootType: 2
 --- !u!1 &4650770423294958626
@@ -194,14 +197,17 @@ MonoBehaviour:
   startingRoot: 1
   bigRootPrefab: {fileID: 7054797741812296950, guid: 6ed5864cd07c87341908e6e326ce382d, type: 3}
   lastSpawnedBigRoot: {fileID: 0}
+  bigYoff: 0
+  bigXoff: 0
   firstVerticalPrefabUp: {fileID: 2845392662858836667, guid: e2d56f2721fdc8a49978b6eab8cfab9f, type: 3}
   firstVerticalPrefabDown: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
   lastSpawnedFirstRoot: {fileID: 0}
+  firstYoff: 0
   secondVerticalPrefabThinUp: {fileID: 3510678472615012918, guid: c0fd5c22b71b8e14994785acbc4e7338, type: 3}
   secondVerticalPrefabThinDown: {fileID: 3214692558420006618, guid: 5a465f4a3de0aa7408f98bdf728125d7, type: 3}
   lastSpawnedSecondRoot: {fileID: 0}
-  xoff: 0
-  laneDistance: {x: 0, y: -1, z: 0}
+  secondXoff: 0
+  laneDistance: {x: 0, y: 0, z: 0}
   spawnDelay: 0.15
   rootType: 1
 --- !u!1 &4650770424092985601
@@ -254,15 +260,18 @@ MonoBehaviour:
   startingRoot: 1
   bigRootPrefab: {fileID: 7054797741812296950, guid: 6ed5864cd07c87341908e6e326ce382d, type: 3}
   lastSpawnedBigRoot: {fileID: 0}
+  bigYoff: -0.4
+  bigXoff: 2
   firstVerticalPrefabUp: {fileID: 2845392662858836667, guid: e2d56f2721fdc8a49978b6eab8cfab9f, type: 3}
   firstVerticalPrefabDown: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
   lastSpawnedFirstRoot: {fileID: 0}
+  firstYoff: 0
   secondVerticalPrefabThinUp: {fileID: 3510678472615012918, guid: c0fd5c22b71b8e14994785acbc4e7338, type: 3}
   secondVerticalPrefabThinDown: {fileID: 3214692558420006618, guid: 5a465f4a3de0aa7408f98bdf728125d7, type: 3}
   lastSpawnedSecondRoot: {fileID: 0}
-  xoff: 0
+  secondXoff: 0
   laneDistance: {x: 0, y: 0, z: 0}
-  spawnDelay: 0.4
+  spawnDelay: 0.2
   rootType: 0
 --- !u!1 &4650770424174106493
 GameObject:
@@ -442,9 +451,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4650770424719203761}
   - component: {fileID: 4650770424719203760}
+  - component: {fileID: 416838429}
+  - component: {fileID: 416838430}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +469,7 @@ Transform:
   m_GameObject: {fileID: 4650770424719203762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.79, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4650770423294958639}
@@ -482,19 +493,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26096adac7c91e54da1cd337f65c3873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 2
+  horizontalSpeed: 5
   pipeEnter: 0
-  waterDecreasePerSecond: 0
-  waterIncrease: 0
-  waterDecrease: 0
+  waterDecreasePerSecond: 1
+  waterIncrease: 20
+  waterDecrease: 20
   waterBarImage: {fileID: 0}
-  maxWater: 0
-  contamWaterDecrease: 0
-  bugWaterDecrease: 0
-  maxDistanceToCollect: 0
+  maxWater: 100
+  contamWaterDecrease: 20
+  bugWaterDecrease: 20
+  maxDistanceToCollect: 5
   lane0: {fileID: 0}
   lane1: {fileID: 0}
   lane2: {fileID: 0}
   lane3: {fileID: 0}
   lane4: {fileID: 0}
   levelManager: {fileID: 0}
+--- !u!50 &416838429
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650770424719203762}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &416838430
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650770424719203762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.125, y: 1.125}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

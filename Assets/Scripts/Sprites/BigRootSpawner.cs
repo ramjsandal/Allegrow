@@ -15,17 +15,21 @@ public class BigRootSpawner : MonoBehaviour
     public bool startingRoot = true;
     [SerializeField] private GameObject bigRootPrefab;
     public GameObject lastSpawnedBigRoot;
+    [SerializeField] private float bigYoff;
+    [SerializeField] private float bigXoff;
 
     [Header("First Vertical Root")]
     [SerializeField] private GameObject firstVerticalPrefabUp;
     [SerializeField] private GameObject firstVerticalPrefabDown;
     public GameObject lastSpawnedFirstRoot;
+    [SerializeField] private float firstYoff;
+
 
     [Header("Second Vertical Root")]
     [SerializeField] private GameObject secondVerticalPrefabThinUp;
     [SerializeField] private GameObject secondVerticalPrefabThinDown;
     public GameObject lastSpawnedSecondRoot;
-    [SerializeField] private float xoff;
+    [SerializeField] private float secondXoff;
     //public int rotationAngle;
     private Quaternion rotation;
 
@@ -125,12 +129,12 @@ public class BigRootSpawner : MonoBehaviour
         lastSpawnedBigRoot = null;
         if (startingRoot == false)
         {
-            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(.75f, 0, 0), spawnPosition.rotation);
+            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(bigXoff, 0, 0), spawnPosition.rotation);
 
         }
         else if (startingRoot == true)
         {
-            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(0 , 0, 1), spawnPosition.rotation);
+            lastSpawnedBigRoot = null;/*Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(0 , bigYoff, 1), spawnPosition.rotation);*/
         }
         tileSpriteRenderer = lastSpawnedBigRoot.GetComponent<SpriteRenderer>();
         SetSpriteSize();
@@ -172,14 +176,14 @@ public class BigRootSpawner : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinUp, spawnPositionSecondVertical, rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinDown, spawnPositionSecondVertical + new Vector3(xoff, 0, 0), rotation);
+                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinDown, spawnPositionSecondVertical + new Vector3(secondXoff, 0, 0), rotation);
         }
         else if (startingRoot == true)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinUp, spawnPositionSecondVertical + new Vector3(.75f, 0, 0), rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinDown, spawnPositionSecondVertical + new Vector3(.75f, 0, 0) + new Vector3(xoff, 0, 0), rotation);
+                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinDown, spawnPositionSecondVertical + new Vector3(.75f, 0, 0) + new Vector3(secondXoff, 0, 0), rotation);
         }
     }
 
