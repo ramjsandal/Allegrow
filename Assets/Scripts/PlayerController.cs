@@ -99,39 +99,32 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) 
     {
-        // If we collide with an enemy...
-        if (collision.gameObject.CompareTag("Plastic"))
+        switch (collision.gameObject.tag)
         {
-            waterLevel -= waterDecrease;
-            Destroy(collision.gameObject);
-        }
-        // If we collide with a "friendly" (water, etc)
-        else if (collision.gameObject.CompareTag("Water"))
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
+            case "Plastic":
+                waterLevel -= waterDecrease;
+                Destroy(collision.gameObject);
+                break;
+            case "Water":
+                if (!Input.GetKey(KeyCode.Space)) return;
                 waterLevel += waterIncrease;
                 Destroy(collision.gameObject);
-            }
-            
-        } 
-        else if (collision.gameObject.CompareTag("ContamWater"))
-        {
-            if (!Input.GetKey(KeyCode.Space)) return;
-            waterLevel -= contamWaterDecrease;
-            Destroy(collision.gameObject);
-        } 
-        else if (collision.gameObject.CompareTag("Bug"))
-        {
-            waterLevel -= bugWaterDecrease;
-            Destroy(collision.gameObject);
-        } 
-        else if (collision.gameObject.CompareTag("PipeStart"))
-        {
-            pipeEnter = true;
-        } else if (collision.gameObject.CompareTag("LevelEnd"))
-        {
-            LevelManager.levelWon = true;
+                break;
+            case "ContamWater":
+                if (!Input.GetKey(KeyCode.Space)) return;
+                waterLevel -= contamWaterDecrease;
+                Destroy(collision.gameObject);
+                break;
+            case "Bug":
+                waterLevel -= bugWaterDecrease;
+                Destroy(collision.gameObject);
+                break;
+            case "PipeStart":
+                pipeEnter = true;
+                break;
+            case "LevelEnd":
+                LevelManager.levelWon = true;
+                break;
         }
     }
     
