@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     public bool levelWon = false;
     [SerializeField] private string nextScene;
     public bool levelLost = false;
-    public 
 
     void Start()
     {
@@ -23,11 +22,7 @@ public class LevelManager : MonoBehaviour
         {
             loadNextLevel();
         }
-
-        if (levelLost)
-        {
-            reloadLevel();
-        }
+        
     }
 
     void loadNextLevel()
@@ -35,7 +30,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
-    void reloadLevel()
+    public void reloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

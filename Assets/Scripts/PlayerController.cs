@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         // Check if the player has run out of water
         if (_waterLevel < .2f)
         {
-            levelManager.levelLost = true;
+            levelManager.reloadLevel();
         }
         waterBarImage.type = Image.Type.Filled;
         waterBarImage.fillAmount = Mathf.Clamp(_waterLevel / maxWater, 0, 1f);
