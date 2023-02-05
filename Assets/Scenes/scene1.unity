@@ -1851,6 +1851,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 755297215}
     - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
+      propertyPath: bugWaterDecrease
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
+      propertyPath: contamWaterDecrease
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
       propertyPath: waterDecreasePerSecond
       value: 5
       objectReference: {fileID: 0}
