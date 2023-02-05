@@ -651,7 +651,7 @@ MonoBehaviour:
   endLane: 1
   end: {fileID: 39939737}
   player: {fileID: 1777296437}
-  gap: 1
+  gap: 0.2
 --- !u!1 &586636298
 GameObject:
   m_ObjectHideFlags: 0

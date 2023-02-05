@@ -12,7 +12,7 @@ public class PipeBehavior : MonoBehaviour
     [SerializeField] private GameObject player;
     private PlayerController _playerController;
 
-    [SerializeField] private float gap = 5f;
+    [SerializeField] private float gap;
 
     // Start is called before the first frame update
     void Start()

@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         pipeEnter = true;
         
         // Move to background
-        //this._spriteRenderer.sortingLayerName = "Hidden";
+        this._spriteRenderer.sortingLayerName = "Hidden";
         
         // Deactivate Collider
         this._collider2D.enabled = false;
