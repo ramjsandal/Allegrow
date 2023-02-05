@@ -15,6 +15,7 @@ TagManager:
   - PipeEnd
   - BackgroundManager
   - LevelEnd
+  - Lane
   layers:
   - Default
   - TransparentFX
