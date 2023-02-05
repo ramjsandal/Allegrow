@@ -1007,6 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelWon: 0
   nextScene: TaksinScene
+  levelLost: 0
 --- !u!212 &1190997349
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1851,12 +1852,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 755297215}
     - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
-      propertyPath: bugWaterDecrease
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
-      propertyPath: contamWaterDecrease
-      value: 20
+      propertyPath: maxDistanceToCollect
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
       propertyPath: waterDecreasePerSecond

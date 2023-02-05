@@ -147,12 +147,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 5
-  waterLevel: 100
+  pipeEnter: 0
   waterDecreasePerSecond: 1
   waterIncrease: 20
   waterDecrease: 20
+  waterBarImage: {fileID: 0}
+  maxWater: 100
+  contamWaterDecrease: 20
+  bugWaterDecrease: 20
   lane0: {fileID: 0}
   lane1: {fileID: 0}
   lane2: {fileID: 0}
   lane3: {fileID: 0}
   lane4: {fileID: 0}
+  LevelManager: {fileID: 0}
