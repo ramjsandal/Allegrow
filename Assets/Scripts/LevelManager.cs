@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     public bool levelWon = false;
     [SerializeField] private string nextScene;
     public bool levelLost = false;
-    public 
 
     void Start()
     {
@@ -24,19 +23,31 @@ public class LevelManager : MonoBehaviour
             loadNextLevel();
         }
 
-        if (levelLost)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            loadMainMenu();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.R))
         {
             reloadLevel();
         }
+        
     }
+    
 
     void loadNextLevel()
     {
         SceneManager.LoadScene(nextScene);
     }
 
-    void reloadLevel()
+    public void reloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void loadMainMenu()
+    {
+        SceneManager.LoadScene("TaksinScene");
     }
 }
