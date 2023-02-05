@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5392ee91df7a4489cfa40e493db4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Options
+  scene: Controls
 --- !u!212 &204369994
 SpriteRenderer:
   m_ObjectHideFlags: 0
