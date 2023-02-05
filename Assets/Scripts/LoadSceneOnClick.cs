@@ -9,8 +9,12 @@ public class LoadSceneOnClick : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private string scene;
     
-    private void OnMouseDown()
+    public void click()
     {
         SceneManager.LoadScene(scene);
     }
+    /*private void OnMouseDown()
+    {
+        SceneManager.LoadScene(scene);
+    }*/
 }

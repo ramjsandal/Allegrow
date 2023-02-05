@@ -22,7 +22,7 @@ public class BigRootSpawner : MonoBehaviour
     [SerializeField] private GameObject firstVerticalPrefabUp;
     [SerializeField] private GameObject firstVerticalPrefabDown;
     public GameObject lastSpawnedFirstRoot;
-    [SerializeField] private float firstYoff;
+    [SerializeField] private float firstXoff;
 
 
     [Header("Second Vertical Root")]
@@ -134,7 +134,7 @@ public class BigRootSpawner : MonoBehaviour
         }
         else if (startingRoot == true)
         {
-            lastSpawnedBigRoot = null;/*Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(0 , bigYoff, 1), spawnPosition.rotation);*/
+            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(bigXoff, bigYoff, 1), spawnPosition.rotation);
         }
         tileSpriteRenderer = lastSpawnedBigRoot.GetComponent<SpriteRenderer>();
         SetSpriteSize();
@@ -146,8 +146,10 @@ public class BigRootSpawner : MonoBehaviour
             tileSpriteRenderer.size = new Vector2(.25f, 1.125f);
             
         }
-        else if (startingRoot == true) { 
-            tileSpriteRenderer.size = new Vector2(1, 1.125f);
+        else if (startingRoot == true) {
+            tileSpriteRenderer.sprite = null;
+            startingRoot = false;
+            //tileSpriteRenderer.size = new Vector2(1, 1.125f);
         }
     }
 
@@ -156,9 +158,9 @@ public class BigRootSpawner : MonoBehaviour
         if (startingRoot == false)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPositionSecondVertical, spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPositionSecondVertical + new Vector3(firstXoff, 0, 0), spawnPosition.rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPositionSecondVertical, spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPositionSecondVertical + new Vector3(firstXoff, 0, 0), spawnPosition.rotation);
         }
         else if (startingRoot == true)
         {
@@ -174,7 +176,7 @@ public class BigRootSpawner : MonoBehaviour
         if (startingRoot == false)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinUp, spawnPositionSecondVertical, rotation);
+                lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinUp, spawnPositionSecondVertical + new Vector3(secondXoff, 0, 0), rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 lastSpawnedFirstRoot = Instantiate(secondVerticalPrefabThinDown, spawnPositionSecondVertical + new Vector3(secondXoff, 0, 0), rotation);
         }
