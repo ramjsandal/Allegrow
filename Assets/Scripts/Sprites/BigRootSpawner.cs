@@ -85,8 +85,8 @@ public class BigRootSpawner : MonoBehaviour
 
         spawnPosition = this.gameObject.transform;
 
-        if (canSpawn)
-        {
+        
+        
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
                 if (rootType == RootType.BigRoot)
@@ -94,7 +94,7 @@ public class BigRootSpawner : MonoBehaviour
                     Invoke(nameof(CreateNextBigRoot), spawnDelay);
                     startingRoot = false;
                 }
-                else if (rootType == RootType.FirstVerticalRoot)
+                else if (rootType == RootType.FirstVerticalRoot && canSpawn)
                 {
                     if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
@@ -107,7 +107,7 @@ public class BigRootSpawner : MonoBehaviour
                         CreateNextFirstVerticalRoot();
                     }
                 }
-                else if (rootType == RootType.SecondVerticalRoot)
+                else if (rootType == RootType.SecondVerticalRoot && canSpawn)
                 {
                     if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
@@ -121,7 +121,7 @@ public class BigRootSpawner : MonoBehaviour
                     }
                 }
             }
-        }
+        
     }
 
     void CreateNextBigRoot()
