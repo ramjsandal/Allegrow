@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/Garden.unity
-    guid: e2e80449a1bfacb4782f75ff32606e67
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/ConnorScene.unity
     guid: d9d3828be2e29734290c7d8d786a8790
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: dc43c0025226cbf4a9f3d1ddb5072ce1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scene1.unity
     guid: 8bf08eb8daf16874aa1543dc26489f90
   - enabled: 1
