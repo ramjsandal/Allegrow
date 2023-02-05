@@ -1736,6 +1736,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190997348}
     - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1190997348}
+    - target: {fileID: 1432993247433606045, guid: da2464619eb98dd41b505ffbd38dd53a, type: 3}
       propertyPath: waterBarImage
       value: 
       objectReference: {fileID: 755297215}
