@@ -117,11 +117,9 @@ public class PlayerController : MonoBehaviour
         } 
         else if (collision.gameObject.CompareTag("ContamWater"))
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                waterLevel -= contamWaterDecrease;
-                Destroy(collision.gameObject);
-            }
+            if (!Input.GetKey(KeyCode.Space)) return;
+            waterLevel -= contamWaterDecrease;
+            Destroy(collision.gameObject);
         } 
         else if (collision.gameObject.CompareTag("Bug"))
         {
