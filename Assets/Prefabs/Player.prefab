@@ -495,7 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 5
   pipeEnter: 0
-  waterDecreasePerSecond: 1
+  waterDecreasePerSecond: 5
   waterIncrease: 20
   waterDecrease: 20
   waterBarImage: {fileID: 0}
