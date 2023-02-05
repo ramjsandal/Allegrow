@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxWater;
     [SerializeField] private float contamWaterDecrease;
     [SerializeField] private float bugWaterDecrease;
+    [SerializeField] private float maxDistanceToCollect;    
 
     [Header("Lanes")]
     [SerializeField] private GameObject lane0;
@@ -107,9 +109,20 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Water":
                 if (!Input.GetKey(KeyCode.Space)) return;
-                waterLevel += waterIncrease;
-                Destroy(collision.gameObject);
+                float distanceToCenter =
+                    Math.Abs(collision.gameObject.transform.position.x - this.transform.position.x);
+                // Calculates how far player is in to water 
+                float gap = (maxDistanceToCollect - distanceToCenter) / maxDistanceToCollect;
+                
+                // If the player is within range
+                if (distanceToCenter < maxDistanceToCollect)
+                {
+                    waterLevel += waterIncrease * (gap);
+                    Debug.Log(waterIncrease * gap);
+                    Destroy(collision.gameObject);
+                }
                 break;
+            
             case "ContamWater":
                 if (!Input.GetKey(KeyCode.Space)) return;
                 waterLevel -= contamWaterDecrease;
