@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject lane3;
     [SerializeField] private GameObject lane4;
 
+    [SerializeField] private LevelManager LevelManager;
+    
     private float waterLevel;
     private int currentLane;
     private GameObject[] lanes;
@@ -129,7 +131,10 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("PipeStart"))
         {
             pipeEnter = true;
-        } 
+        } else if (collision.gameObject.CompareTag("LevelEnd"))
+        {
+            LevelManager.levelWon = true;
+        }
     }
     
     

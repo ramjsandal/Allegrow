@@ -6,18 +6,21 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private bool levelOver = false;
+    public bool levelWon = false;
     [SerializeField] private string nextScene;
-    
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (levelWon)
+        {
+            loadNextLevel();
+        }
     }
 
     void loadNextLevel()
