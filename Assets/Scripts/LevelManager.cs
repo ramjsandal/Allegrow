@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            reloadLevel();
+            loadMainMenu();
         }
         
     }
@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void loadMainMenu()
+    public void loadMainMenu()
     {
         SceneManager.LoadScene("TaksinScene");
     }
