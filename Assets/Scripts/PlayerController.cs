@@ -125,6 +125,8 @@ public class PlayerController : MonoBehaviour
             case "LevelEnd":
                 LevelManager.levelWon = true;
                 break;
+            default: Debug.Log("This is for you Jane");
+                break;
         }
     }
     
