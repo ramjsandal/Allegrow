@@ -36,6 +36,7 @@ public class BigRootSpawner : MonoBehaviour
     [Header("Spawn Calculations")]
     [SerializeField] private Vector3 laneDistance;
     [SerializeField] private float spawnDelay;
+    [SerializeField] private float spawnDelayEdge;
 
 
     private Transform spawnPosition;
@@ -44,11 +45,13 @@ public class BigRootSpawner : MonoBehaviour
     private int laneCount;
     private bool canSpawn;
     SpriteRenderer tileSpriteRenderer;
+    private bool edge;
     private enum RootType { BigRoot, FirstVerticalRoot, SecondVerticalRoot};
     [SerializeField]private RootType rootType;
 
     private void Start()
     {
+        spawnDelayEdge = 0;
         canSpawn = true;
         player = GameObject.FindGameObjectWithTag("Player");
         laneParent = GameObject.FindGameObjectWithTag("Lane");
@@ -69,6 +72,7 @@ public class BigRootSpawner : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)){
                 Invoke(nameof(SpawnEnabler), 0.01f);
+                edge = true;
             }
         }
         else if(player.transform.position.y == lanes[4].transform.position.y)
@@ -76,25 +80,34 @@ public class BigRootSpawner : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 Invoke(nameof(SpawnEnabler), 0.01f);
+                edge = true;
             }
         }
         else
         {
             canSpawn = true;
+            edge = false;
         }
 
         spawnPosition = this.gameObject.transform;
 
-        if (canSpawn)
-        {
+        
+        
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
                 if (rootType == RootType.BigRoot)
                 {
+                if (edge)
+                {
+                    Invoke(nameof(CreateNextBigRoot), spawnDelayEdge);
+                }
+                else
+                {
                     Invoke(nameof(CreateNextBigRoot), spawnDelay);
                     startingRoot = false;
                 }
-                else if (rootType == RootType.FirstVerticalRoot)
+                }
+                else if (rootType == RootType.FirstVerticalRoot && canSpawn)
                 {
                     if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
@@ -107,7 +120,7 @@ public class BigRootSpawner : MonoBehaviour
                         CreateNextFirstVerticalRoot();
                     }
                 }
-                else if (rootType == RootType.SecondVerticalRoot)
+                else if (rootType == RootType.SecondVerticalRoot && canSpawn)
                 {
                     if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
@@ -121,7 +134,7 @@ public class BigRootSpawner : MonoBehaviour
                     }
                 }
             }
-        }
+        
     }
 
     void CreateNextBigRoot()
