@@ -11,6 +11,8 @@ TagManager:
   - Bug
   - Pipe
   - Plastic
+  - PipeStart
+  - PipeEnd
   layers:
   - Default
   - TransparentFX
@@ -45,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Hidden
+    uniqueID: 1543108319
+    locked: 0
   - name: Background
     uniqueID: 147014647
     locked: 0
