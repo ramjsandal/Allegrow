@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horizontalSpeed;
 
     public bool pipeEnter = false;
-    public bool pipeEnd = false;
-    
+    private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider2D;
+    private float endY;
     
     [Header("Water")]
     [SerializeField] private int waterDecreasePerSecond;
@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
         Transform t = this.transform;
         t.position = new Vector2(t.position.x, lane2.transform.position.y);
         currentLane = 2;
+        _spriteRenderer = this.GetComponent<SpriteRenderer>();
+        _collider2D = this.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -77,8 +79,16 @@ public class PlayerController : MonoBehaviour
         
         
         // Move the player to the new lane
-        currentTransform.position =
-            new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, lanes[currentLane].transform.position.y);
+        if (!pipeEnter)
+        {
+            currentTransform.position =
+                new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, lanes[currentLane].transform.position.y);    
+        }
+        else
+        {
+            this.transform.position = new Vector2(currentPosition.x + Time.deltaTime * horizontalSpeed, endY);
+        }
+        
 
         decreaseWaterLevel();
         waterBarImage.type = Image.Type.Filled;
@@ -116,10 +126,10 @@ public class PlayerController : MonoBehaviour
             waterLevel -= bugWaterDecrease;
             Destroy(collision.gameObject);
         } 
-        else if (collision.gameObject.CompareTag("Pipe"))
+        else if (collision.gameObject.CompareTag("PipeStart"))
         {
-            
-        }
+            pipeEnter = true;
+        } 
     }
     
     
@@ -136,5 +146,35 @@ public class PlayerController : MonoBehaviour
         // Draw your water level 
         // GUI.Button(new Rect(100, 100, 200, 200), "Water: " + waterLevel.ToString("F0"), _guiStyle);
 
+    }
+
+    public void enterPipe(GameObject end, int endLane)
+    {
+        // Remove Controls
+        pipeEnter = true;
+        
+        // Move to background
+        this._spriteRenderer.sortingLayerName = "Hidden";
+        
+        // Deactivate Collider
+        this._collider2D.enabled = false;
+        
+        // Set y position to y position of end
+        endY = end.transform.position.y;
+
+        currentLane = endLane;
+
+    }
+
+    public void exitPipe()
+    {
+        // Turn on collider
+        this._collider2D.enabled = true;
+        
+        // Move to foreground
+        this._spriteRenderer.sortingLayerName = "Player";
+        
+        // Return controls
+        pipeEnter = false;
     }
 }
