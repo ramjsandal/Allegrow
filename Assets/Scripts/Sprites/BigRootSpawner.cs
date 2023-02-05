@@ -53,7 +53,16 @@ public class BigRootSpawner : MonoBehaviour
             }
             else if(rootType == RootType.FirstVerticalRoot)
             {
-                CreateNextFirstVerticalRoot();
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    spawnPositionSecondVertical = spawnPosition.position + laneDistance;
+                    CreateNextFirstVerticalRoot();
+                }
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    spawnPositionSecondVertical = spawnPosition.position - laneDistance;
+                    CreateNextFirstVerticalRoot();
+                }
             }
             else if (rootType == RootType.SecondVerticalRoot)
             {
@@ -81,7 +90,7 @@ public class BigRootSpawner : MonoBehaviour
         }
         else if (startingRoot == true)
         {
-            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position, spawnPosition.rotation);
+            lastSpawnedBigRoot = Instantiate(bigRootPrefab, spawnPosition.position + new Vector3(0 , 0, 1), spawnPosition.rotation);
         }
         tileSpriteRenderer = lastSpawnedBigRoot.GetComponent<SpriteRenderer>();
         SetSpriteSize();
@@ -103,16 +112,16 @@ public class BigRootSpawner : MonoBehaviour
         if (startingRoot == false)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPosition.position, spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPositionSecondVertical, spawnPosition.rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPosition.position, spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPositionSecondVertical, spawnPosition.rotation);
         }
         else if (startingRoot == true)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPosition.position + new Vector3(.75f, 0, 0), spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabUp, spawnPositionSecondVertical + new Vector3(.75f, 0, 0), spawnPosition.rotation);
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPosition.position + new Vector3(.75f, 0, 0), spawnPosition.rotation);
+                lastSpawnedFirstRoot = Instantiate(firstVerticalPrefabDown, spawnPositionSecondVertical + new Vector3(.75f, 0, 0), spawnPosition.rotation);
         }
     }
 
