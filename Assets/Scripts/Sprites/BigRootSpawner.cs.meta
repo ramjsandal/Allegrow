@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c9471a88db6dc344eb6d53b4afc0fa80
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bigRootPrefab: {fileID: 7054797741812296950, guid: 6ed5864cd07c87341908e6e326ce382d, type: 3}
+  - lastSpawnedBigRoot: {instanceID: 0}
+  - firstVerticalPrefab: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
+  - firstVerticalRootUp: {fileID: 21300000, guid: dd142a60ff22a0f46b016bcc8354ca8f, type: 3}
+  - firstVerticalRootDown: {fileID: 21300000, guid: 49ef8b268b81fb644baa8ef9e8bb0991, type: 3}
+  - lastSpawnedFirstRoot: {instanceID: 0}
+  - secondVerticalPrefab: {instanceID: 0}
+  - secondVerticalRootThin: {instanceID: 0}
+  - secondVerticalRootThick: {instanceID: 0}
+  - lastSpawnedSecondRoot: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

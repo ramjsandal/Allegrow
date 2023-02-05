@@ -43,16 +43,17 @@ public class SpriteController : MonoBehaviour
         this.transform.position += new Vector3((tileSpriteRenderer.size.x - 1) * 0.5f, 0, 0);
     }
 
-    void MoveSprite()
-    {
-        canGrow = false;
-    }
+    //void MoveSprite()
+    //{
+    //    canGrow = false;
+    //}
 
     void InputCheck()
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && canGrow)
         {
-            MoveSprite();
+            canGrow = false;
+            //MoveSprite();
         }
         else
         {
