@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 755239530197373196}
   - component: {fileID: 1602993759110765187}
   - component: {fileID: 1003444144807783851}
+  - component: {fileID: 1318003440}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Plastic
@@ -111,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
+--- !u!114 &1318003440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728007248648815001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9203b3e9b8f5c624fb3daede7f93130f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 2761298797699085221, guid: 8b0a249428a42bd44b4db7d08b1daff7, type: 3}
