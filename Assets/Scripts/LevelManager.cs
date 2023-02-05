@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public bool levelWon = false;
     [SerializeField] private string nextScene;
     public bool levelLost = false;
+    public 
 
     void Start()
     {
