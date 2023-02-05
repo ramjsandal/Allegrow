@@ -269,6 +269,7 @@ MonoBehaviour:
   lane2: {fileID: 1320632765}
   lane3: {fileID: 1478382766}
   lane4: {fileID: 656213207}
+  LevelManager: {fileID: 0}
 --- !u!1 &346585433
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingRoot: 1
   bigRootPrefab: {fileID: 7054797741812296950, guid: 6ed5864cd07c87341908e6e326ce382d, type: 3}
-  spawnDelay: 0
+  spawnDelay: 0.15
   lastSpawnedBigRoot: {fileID: 0}
 --- !u!1 &1295581285
 GameObject:
