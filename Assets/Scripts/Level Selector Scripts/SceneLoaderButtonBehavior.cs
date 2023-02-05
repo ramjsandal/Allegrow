@@ -10,13 +10,13 @@ public class SceneLoaderButtonBehavior : MonoBehaviour
     [SerializeField]
     BackgroundManager bgman;
     [SerializeField]
-    string[] levels;
+    string[] levels = new string[3];
     [SerializeField]
     string sceneToBack;
 
     void Start()
     {
-        levels = new string[3];
+        
     }
 
     // Update is called once per frame
@@ -27,11 +27,16 @@ public class SceneLoaderButtonBehavior : MonoBehaviour
 
     public void click()
     {
+        Debug.Log(sceneToBack);
         Debug.Log("play button clicked");
-        if (!string.IsNullOrEmpty(levels[bgman.pointer]))
+        Debug.Log("Attempted to load scene:" + "pointer:" + bgman.pointer + "Level:" + levels[bgman.pointer]);
+        SceneManager.LoadScene(levels[bgman.pointer]);
+        /*if (!string.IsNullOrEmpty(levels[bgman.pointer]))
         {
+            Debug.Log("Attempted to load scene");
             SceneManager.LoadScene(levels[bgman.pointer]);
-        }
+            Debug.Log("Succeeded to load scene");
+        }*/
     }
     public void goBack()
     {
