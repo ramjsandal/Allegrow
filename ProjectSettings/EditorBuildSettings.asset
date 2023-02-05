@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: dc43c0025226cbf4a9f3d1ddb5072ce1
+  - enabled: 1
+    path: Assets/Scenes/ConnorScene.unity
+    guid: d9d3828be2e29734290c7d8d786a8790
   m_configObjects: {}
