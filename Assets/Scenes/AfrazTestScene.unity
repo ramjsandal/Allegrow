@@ -266,12 +266,13 @@ MonoBehaviour:
   maxWater: 0
   contamWaterDecrease: 0
   bugWaterDecrease: 0
+  maxDistanceToCollect: 0
   lane0: {fileID: 2051725479}
   lane1: {fileID: 346585433}
   lane2: {fileID: 1320632765}
   lane3: {fileID: 1478382766}
   lane4: {fileID: 656213207}
-  LevelManager: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!1 &346585433
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +580,7 @@ MonoBehaviour:
   secondVerticalPrefabThinDown: {fileID: 3214692558420006618, guid: 5a465f4a3de0aa7408f98bdf728125d7, type: 3}
   lastSpawnedSecondRoot: {fileID: 0}
   xoff: 0
-  laneDistance: {x: 0, y: 0, z: 0}
+  laneDistance: {x: 0, y: -1, z: 0}
   spawnDelay: 0.15
   rootType: 1
 --- !u!1 &656213207
@@ -910,7 +911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984487238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.28, y: -0.04, z: 0}
+  m_LocalPosition: {x: -3.28, y: -0.04, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1492,7 +1493,7 @@ MonoBehaviour:
   secondVerticalPrefabThinDown: {fileID: 6366221678151121878, guid: 37e567f512a0b194085f6f7637d81210, type: 3}
   lastSpawnedSecondRoot: {fileID: 0}
   xoff: 0.11
-  laneDistance: {x: 0, y: 1, z: 0}
+  laneDistance: {x: 0, y: 0, z: 0}
   spawnDelay: 0.15
   rootType: 2
 --- !u!1001 &7054797742998856934
