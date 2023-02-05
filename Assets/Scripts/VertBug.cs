@@ -35,15 +35,11 @@ public class VertBug : MonoBehaviour
 
     private void Update()
     {
-        
-        //this.transform.position = new Vector2(this.transform.position.x, _pos);
-        
-        
         float step = Time.deltaTime * smoothingVal;
-        this.transform.position = Vector2.MoveTowards(this.transform.position,
-            new Vector2(this.transform.position.x, _pos), step);
-        
-        
+        Vector3 position = this.transform.position;
+        position = Vector2.MoveTowards(position,
+            new Vector2(position.x, _pos), step);
+        this.transform.position = position;
     }
     
 }
