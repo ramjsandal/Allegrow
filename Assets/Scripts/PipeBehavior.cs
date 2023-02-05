@@ -33,7 +33,7 @@ public class PipeBehavior : MonoBehaviour
     void pipeStart()
     {
         // Call method in player that removes controls
-        _playerController.enterPipe(end, endLane);
+        _playerController.EnterPipe(end, endLane);
     }
 
     void pipeEnd()
@@ -45,7 +45,7 @@ public class PipeBehavior : MonoBehaviour
 
         if (playerXPos > (endXPos - gap) && playerXPos < (endXPos + gap))
         {
-            _playerController.exitPipe();
+            _playerController.ExitPipe();
         }
 
     }
