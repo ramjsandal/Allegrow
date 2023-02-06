@@ -12,15 +12,19 @@ public class PlantBehavior : MonoBehaviour
     [SerializeField]
     BackgroundManager bgman;
 
-    void Start()
+
+    [SerializeField] private GameObject Highlight;
+
+
+    private void OnMouseOver()
     {
-        
+        Highlight.SetActive(true);
+        bgman.changeBackground(bgChange);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseExit()
     {
-        
+        Highlight.SetActive(false);
     }
 
     private void OnMouseDown()
@@ -28,7 +32,7 @@ public class PlantBehavior : MonoBehaviour
         // XDDDDD it checks if you click the object by the way!!!11!11!
         //changeScene();
         Debug.Log("OnMouseDown called");
-        bgman.changeBackground(bgChange);
+
     }
 
     private void changeScene()
