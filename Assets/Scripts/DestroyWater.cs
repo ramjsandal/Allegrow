@@ -12,7 +12,6 @@ public class DestroyWater : MonoBehaviour
 
     private IEnumerator coroutine;
 
-    [SerializeField] private GameObject waterParticles;
 
     // Update is called once per frame
     void Update()

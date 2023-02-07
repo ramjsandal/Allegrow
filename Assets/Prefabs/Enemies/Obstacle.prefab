@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7517751978181427610}
   - component: {fileID: 1003444144807783851}
   - component: {fileID: 1318003440}
+  - component: {fileID: 3632741554052046272}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Plastic
@@ -144,3 +145,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 2761298797699085221, guid: 8b0a249428a42bd44b4db7d08b1daff7, type: 3}
+--- !u!114 &3632741554052046272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728007248648815001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5a812700b70d244b921abde61a47df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXToPlay: {fileID: 5113088567351772394, guid: 6c80022b833787641aa1539f72b27a8c, type: 3}

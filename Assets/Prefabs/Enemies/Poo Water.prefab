@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 500002845913675640}
   - component: {fileID: -4456294792855019275}
   - component: {fileID: 6619653928782868204}
+  - component: {fileID: 2478209283427712714}
   m_Layer: 0
   m_Name: Poo Water
   m_TagString: ContamWater
@@ -145,3 +146,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 52a09e59a3f00594aae61442dd0aa32f, type: 3}
   - {fileID: 21300000, guid: 949fd7816b31c7a40957d7c771b60fee, type: 3}
   - {fileID: 21300000, guid: 9ccdacfd99fa5b544959836d32ed2ec1, type: 3}
+--- !u!114 &2478209283427712714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256021086775222272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5a812700b70d244b921abde61a47df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXToPlay: {fileID: 5113088567351772394, guid: 6c80022b833787641aa1539f72b27a8c, type: 3}
