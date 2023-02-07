@@ -6,6 +6,7 @@ using UnityEngine;
 public class ParticlesOnDestroy : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
+
     
     private void OnDestroy()
     {
@@ -13,7 +14,7 @@ public class ParticlesOnDestroy : MonoBehaviour
         ParticleSystem effect = Instantiate(particles);
         effect.transform.position = this.transform.position;
         effect.Play();
-        
+
         //Destroy(effect.gameObject, particles.main.duration);
     }
 }

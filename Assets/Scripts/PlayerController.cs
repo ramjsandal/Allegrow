@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+
+
     [FormerlySerializedAs("waterCollectionPoint")] 
     [SerializeField] private GameObject hitIndicator;
     private Vector3 _indicatorScale;
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private float _endY;
 
     [Header("Water")]
+    [SerializeField] private GameObject waterSFX;
+
     [SerializeField] private int waterDecreasePerSecond;
     [SerializeField] private float waterIncrease;
     [SerializeField] private float waterDecrease;
@@ -119,6 +124,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Water":
+
                 float distanceToCenter =
                     Math.Abs(collision.gameObject.transform.position.x - this.transform.position.x);
 
@@ -135,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 // If the player is within range
                 if (distanceToCenter < maxDistanceToCollect)
                 {
+                    Instantiate(waterSFX, transform.position, Quaternion.identity);
                     _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
                     collision.gameObject.GetComponent<Collider2D>().enabled = false;

@@ -497,9 +497,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26096adac7c91e54da1cd337f65c3873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterCollectionPoint: {fileID: 7901363314270344769}
+  hitIndicator: {fileID: 7901363314270344769}
   horizontalSpeed: 5
   pipeEnter: 0
+  waterSFX: {fileID: 2757683056207961450, guid: 6643891902813044f8b463c51caa40c4, type: 3}
+  waterParticles: {fileID: 2761298797699085219, guid: 5150622142a4ddd4eb5285a0f7845638, type: 3}
   waterDecreasePerSecond: 5
   waterIncrease: 20
   waterDecrease: 20
