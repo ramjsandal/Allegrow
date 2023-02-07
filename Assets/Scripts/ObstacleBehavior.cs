@@ -10,9 +10,4 @@ public class ObstacleBehavior : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    private void OnDestroy()
-    {
-        throw new NotImplementedException();
-    }
 }

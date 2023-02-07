@@ -7,18 +7,7 @@ using UnityEngine;
 public class ParticlesOnDestroy : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;

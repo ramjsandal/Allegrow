@@ -138,7 +138,6 @@ public class PlayerController : MonoBehaviour
                     _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
                     collision.gameObject.GetComponent<Collider2D>().enabled = false;
-                    hitIndicator.transform.localScale = _indicatorScale;
                 }
 
                 break;
