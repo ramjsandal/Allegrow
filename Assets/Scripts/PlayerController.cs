@@ -9,13 +9,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject waterCollectionPoint;
-    private Vector3 waterCollectionPointOriginalScale;
+    [FormerlySerializedAs("waterCollectionPoint")] 
+    [SerializeField] private GameObject hitIndicator;
+    private Vector3 _indicatorScale;
 
     [Header("Movement")]
     [SerializeField] private float horizontalSpeed;
 
-    public bool pipeEnter = false;
+    public bool pipeEnter;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
     private float _endY;
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        waterCollectionPointOriginalScale = new Vector3(waterCollectionPoint.transform.localScale.x, waterCollectionPoint.transform.localScale.y, waterCollectionPoint.transform.localScale.z);
+        var localScale = hitIndicator.transform.localScale;
+        _indicatorScale = new Vector3(localScale.x, localScale.y, localScale.z);
 
         _lanes = new GameObject[5];
         _lanes[0] = lane0;
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
                 if (distanceToCenter < maxDistanceToCollect)
                 {
-                    waterCollectionPoint.transform.localScale = waterCollectionPointOriginalScale * 2f;
+                    hitIndicator.transform.localScale = _indicatorScale * 2f;
                 }
 
 
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
                     _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
                     collision.gameObject.GetComponent<Collider2D>().enabled = false;
-                    waterCollectionPoint.transform.localScale = waterCollectionPointOriginalScale;
+                    hitIndicator.transform.localScale = _indicatorScale;
                 }
 
                 break;
@@ -160,7 +162,13 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-    
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.gameObject.CompareTag("Water")) return;
+        hitIndicator.transform.localScale = _indicatorScale;
+    }
+
     private void DecreaseWaterLevel()
     {
         _waterLevel -= waterDecreasePerSecond * Time.deltaTime;
