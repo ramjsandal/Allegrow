@@ -123,7 +123,8 @@ public class PlayerController : MonoBehaviour
                 {
                     _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
-                    Destroy(collision.gameObject);
+                    collision.gameObject.GetComponent<Collider2D>().enabled = false;
+
                 }
                 break;
             
