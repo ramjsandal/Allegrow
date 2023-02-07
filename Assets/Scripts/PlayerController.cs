@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject waterCollectionPoint;
+    private Vector3 waterCollectionPointOriginalScale;
+
     [Header("Movement")]
     [SerializeField] private float horizontalSpeed;
 
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        waterCollectionPointOriginalScale = new Vector3(waterCollectionPoint.transform.localScale.x, waterCollectionPoint.transform.localScale.y, waterCollectionPoint.transform.localScale.z);
+
         _lanes = new GameObject[5];
         _lanes[0] = lane0;
         _lanes[1] = lane1;
@@ -112,9 +117,16 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Water":
-                if (!Input.GetKey(KeyCode.Space)) return;
                 float distanceToCenter =
                     Math.Abs(collision.gameObject.transform.position.x - this.transform.position.x);
+
+                if (distanceToCenter < maxDistanceToCollect)
+                {
+                    waterCollectionPoint.transform.localScale = waterCollectionPointOriginalScale * 2f;
+                }
+
+
+                if (!Input.GetKey(KeyCode.Space)) return;
                 // Calculates how far player is in to water 
                 float gap = (maxDistanceToCollect - distanceToCenter) / maxDistanceToCollect;
                 
@@ -124,8 +136,9 @@ public class PlayerController : MonoBehaviour
                     _waterLevel += waterIncrease * (gap);
                     Debug.Log(waterIncrease * gap);
                     collision.gameObject.GetComponent<Collider2D>().enabled = false;
-
+                    waterCollectionPoint.transform.localScale = waterCollectionPointOriginalScale;
                 }
+
                 break;
             
             case "ContamWater":

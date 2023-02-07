@@ -26,6 +26,6 @@ public class ParticlesOnDestroy : MonoBehaviour
         effect.transform.position = this.transform.position;
         effect.Play();
         
-        Destroy(effect.gameObject, particles.main.duration);
+        //Destroy(effect.gameObject, particles.main.duration);
     }
 }

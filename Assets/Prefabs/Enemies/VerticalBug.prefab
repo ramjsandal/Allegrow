@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8724313353530404022}
   - component: {fileID: 8724313353530404021}
   - component: {fileID: 8724313353530404020}
-  - component: {fileID: 6823949009731866091}
   - component: {fileID: 1876083659}
+  - component: {fileID: -1295119534436225363}
   m_Layer: 0
   m_Name: VerticalBug
   m_TagString: Bug
@@ -103,19 +103,6 @@ MonoBehaviour:
   laneTwo: {fileID: 0}
   interval: 2
   smoothingVal: 5
---- !u!114 &6823949009731866091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8724313353530404027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9203b3e9b8f5c624fb3daede7f93130f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 2761298797699085221, guid: 8b0a249428a42bd44b4db7d08b1daff7, type: 3}
 --- !u!61 &1876083659
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,3 +129,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7562263, y: 0.11232756}
   m_EdgeRadius: 0
+--- !u!114 &-1295119534436225363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724313353530404027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9203b3e9b8f5c624fb3daede7f93130f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 2761298797699085221, guid: 8b0a249428a42bd44b4db7d08b1daff7, type: 3}
