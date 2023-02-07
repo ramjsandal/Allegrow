@@ -12,6 +12,7 @@ public class DestroyWater : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    [SerializeField] private GameObject waterParticles;
 
     // Update is called once per frame
     void Update()
@@ -21,12 +22,16 @@ public class DestroyWater : MonoBehaviour
             StartCoroutine(coroutine);
             print("Coroutine started");
         }
+        if(transform.localScale.x < 0.01f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator ShrinkWater(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         transform.localScale = transform.localScale * 0.9f;
-        print("Coroutine ended: " + Time.time + " seconds");
+        
     }
 }
