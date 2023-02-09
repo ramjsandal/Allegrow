@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class MoveCameraOnClick : MonoBehaviour
 {
+
+
+
     [SerializeField] private GameObject objectToMoveTo;
 
     [SerializeField] private GameObject MainCam;
 
     [SerializeField] private GameObject canvas;
+
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
+
+
 
     public void click()
     {
@@ -27,5 +36,6 @@ public class MoveCameraOnClick : MonoBehaviour
     private void OnMouseDown()
     {
         click();
+        _audioSource.PlayOneShot(_audioClip);
     }
 }

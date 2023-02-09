@@ -459,6 +459,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2001271468}
     - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
+      propertyPath: _audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b882446802181574695596c34b89ba9e, type: 3}
+    - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 2001271472}
+    - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
       propertyPath: objectToMoveTo
       value: 
       objectReference: {fileID: 606819144}
@@ -698,6 +706,8 @@ MonoBehaviour:
   objectToMoveTo: {fileID: 65862868}
   MainCam: {fileID: 2001271468}
   canvas: {fileID: 378551687}
+  _audioSource: {fileID: 0}
+  _audioClip: {fileID: 0}
 --- !u!1 &1245365330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1141,8 @@ MonoBehaviour:
   objectToMoveTo: {fileID: 1869100122}
   MainCam: {fileID: 2001271468}
   canvas: {fileID: 378551687}
+  _audioSource: {fileID: 0}
+  _audioClip: {fileID: 0}
 --- !u!1 &1584795948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2234,14 @@ PrefabInstance:
       propertyPath: MainCam
       value: 
       objectReference: {fileID: 2001271468}
+    - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
+      propertyPath: _audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 38ea15e455b6f784799e119ad79ea009, type: 3}
+    - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 2001271472}
     - target: {fileID: 7006058880002360441, guid: 2723e66fa719afc44b8d8eb9b9fe5f58, type: 3}
       propertyPath: objectToMoveTo
       value: 
