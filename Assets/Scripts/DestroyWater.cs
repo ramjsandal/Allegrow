@@ -8,7 +8,6 @@ public class DestroyWater : MonoBehaviour
     private bool _flip = false; 
 
     [SerializeField] private Collider2D col;
-    [SerializeField] private float shrinkSpeed = .01f;
 
     private IEnumerator coroutine;
 

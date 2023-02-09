@@ -19,16 +19,12 @@ public class SpriteController : MonoBehaviour
     [SerializeField] private Vector2 tileIncrement;
     private bool canGrow;
     private int laneCount;
-    private int inputCount;
-    private bool inputDisabler;
     private Transform playerPosition;
     //private bool canSpawn;
 
     // Start is called before the first frame update
     void Awake()
     {
-        inputDisabler = true;
-        inputCount = 0;
         tileSprite = this.gameObject;
         tileSpriteRenderer = tileSprite.GetComponent<SpriteRenderer>();
         startingPosition = this.transform.position;
